@@ -1,5 +1,6 @@
 package services;
 
+import DTO.UserDto;
 import Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,12 @@ public class UserService {
             throw new ObjectNotFoundException("objeto não encontrado");
         }
         return user;
+    }
+    public User insert(User obj){
+        return repo.insert(obj);
+    }
+
+    public User fromDTO(UserDto objDto){
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
